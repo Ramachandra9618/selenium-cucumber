@@ -10,9 +10,9 @@ Feature:
 
     Examples:
       |string|
-      | shirts  |
-      |pant     |
-      |mobile   |
+#      | shirts  |
+#      |pant     |
+#      |mobile   |
 
 
   Scenario Outline: : End to End

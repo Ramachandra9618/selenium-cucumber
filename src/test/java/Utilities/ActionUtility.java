@@ -21,20 +21,6 @@ public class ActionUtility {
             PageFactory.initElements(driver, this);
         }
 
-        public void screenShot(String name) {
-            TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
-            File srcFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
-            String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-
-            File destFile = new File("screenshot/" + name + "_" + timestamp + "_screenshot.png");
-            try {
-                FileUtils.copyFile(srcFile, destFile);
-                System.out.println("Screenshot saved successfully at: " + destFile.getAbsolutePath());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
         public void clickEnterButton() throws AWTException {
             Robot robot = new Robot();
             robot.delay(2000);
@@ -66,5 +52,20 @@ public class ActionUtility {
             robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
             robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         }
+
+
+            public void screenShot(String name) {
+                TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
+                File srcFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
+                String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+
+                File destFile = new File("screenshot/" + name + "_" + timestamp + "_screenshot.png");
+                try {
+                    FileUtils.copyFile(srcFile, destFile);
+                    System.out.println("Screenshot saved successfully at: " + destFile.getAbsolutePath());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
     }
 

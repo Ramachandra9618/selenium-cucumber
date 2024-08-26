@@ -1,5 +1,7 @@
 package stepDefinitions;
 
+import Utilities.AllSheetData;
+import Utilities.ExcelUtility;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
@@ -10,6 +12,8 @@ import org.openqa.selenium.WebDriver;
 
 
 import java.awt.*;
+import java.io.IOException;
+import java.util.List;
 import java.util.Set;
 
 public class Steps extends Index {
@@ -161,8 +165,22 @@ public class Steps extends Index {
     }
 
     @When("search the product in the search by keyboard {string}")
-    public void search_the_product_in_the_search_by_keyboard(String string) throws AWTException {
-       getActionUtility().enterDataByKeyboard(string);
+    public void search_the_product_in_the_search_by_keyboard(String string) throws AWTException, IOException {
+
+        int columnNum = Integer.parseInt(string);
+        String path = "src/test/resources/products.xlsx";
+        String sheetName = "productNames";
+        String productName =  ExcelUtility.getCellData(path, sheetName,  columnNum, 0);
+        System.out.println(productName);
+        getActionUtility().enterDataByKeyboard(productName);
+
+//        List<String[]> data = allSheetData .loadDataFromExcel("src/test/resources/products.xlsx", "productNames");
+//        for (String[] ar : data){
+//            for(int i =0 ; i<ar.length; i++){
+//                System.out.println(ar[i]);
+//       getActionUtility().enterDataByKeyboard(ar[i]);
+//            }
+//        }
     }
 
 

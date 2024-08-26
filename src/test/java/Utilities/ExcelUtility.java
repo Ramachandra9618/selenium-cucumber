@@ -15,8 +15,9 @@ public class ExcelUtility {
     public static String getCellData(String filePath, String sheetName, int rownum, int colnum) {
         String cellData = null;
 
-        try (FileInputStream fis = new FileInputStream(filePath); Workbook workbook = new XSSFWorkbook(fis)) {
-
+        try {
+            FileInputStream fis = new FileInputStream(filePath);
+            Workbook workbook = new XSSFWorkbook(fis);
             Sheet sheet = workbook.getSheet(sheetName);
             if (sheet == null) {
                 throw new IllegalArgumentException("Sheet " + sheetName + " does not exist.");

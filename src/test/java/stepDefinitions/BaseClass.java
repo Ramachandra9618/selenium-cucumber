@@ -33,7 +33,9 @@ public class BaseClass {
         if (browser.equalsIgnoreCase("chrome")) {
             webDriver = new ChromeDriver();
         } else if (browser.equalsIgnoreCase("firefox")) {
+            System.setProperty("webdriver.gecko.driver", "/home/chandra/Documents/cucumber/geckodriver");
             webDriver = new FirefoxDriver();
+
         } else {
             throw new RuntimeException("Browser type unsupported");
         }
